@@ -9,8 +9,6 @@ function addTodo(event) {
     todos.push(input)
     convertTolist()
    
-
-
 }
 function delet_todo(editableidx) {
    todos =  todos.filter((el,index)=> index != editableidx)

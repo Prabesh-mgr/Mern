@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" onsubmit="addTwoList(event)">
+        <input type="text" required id="customername" placeholder="Customer Name">
+        <input type="text"required id="productname" placeholder="Product Name">
+        <button>Submit</button>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name </th>
+                <th>Product Name</th>
+            <tr>
+
+        </thead>
+        
+            <tbody>
+                <!-- <tr>
+                    <td>Prabesh</td>
+                    <td>Apple</td>
+                </tr>
+                <tr>
+                    <td>Kiran</td>
+                    <td>Mango</td>
+                </tr> -->
+
+            </tbody>
+
+    </table>
+    <script>
+        let formEl = document.querySelector("form")
+        let tbodyEl = document.querySelector("tbody")
+
+        function addTwoList(event) {
+            event.preventDefault()
+            let input = document.getElementById("customername").value
+            let input1 = document.getElementById("productname").value
+
+            tbodyEl.innerHTML += `
+            <tr>
+               <td> ${input}</td>
+               <td> ${input1}</td>
+            </tr>`
+        }
+        formEl.addEventListener('submit',addTwoList())
+    </script>
+</body>
+
+</html>

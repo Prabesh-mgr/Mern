@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      span{
+        border: 1px solid;
+        /* border-radius: 5px; */
+        padding: 1px 9px;
+      }
+    </style>
+</head>
+
+<body>
+    <form action="" onsubmit="createTodo(event)">
+        <input type="text" required id="title">
+        <button>Submit</button>
+    </form>
+
+    <ul id="backend-data-list">
+        <!-- <li>html</li>
+        <li>css</li>
+        <li>js</li> -->
+    </ul>
+    <script>
+      let todos = []
+      function createTodo(event){
+        event.preventDefault();
+        axios.post("https://todo-api-dom.vercel.app/api/todos/",{
+            title: document.getElementById("title").value
+        }).then((res)=>{
+             fetchTodos()
+        });
+
+      }
+
+      function fetchTodos(){
+        axios.get("https://todo-api-dom.vercel.app/api/todos/")
+      .then((res) =>{
+        console.log(res.data.data)
+        todos = res.data.data
+
+        let output = ""
+        res.data.data.forEach(element => {
+           output += `<li>${element.title} <span class="" onclick="toggleStatus('${element._id}')">${element.status}</span></li>`
+           })
+
+           document.getElementById("backend-data-list").innerHTML = output
+        })
+        .catch((err)=>{
+                document.getElementById("backend-data-list").innerHTML = "please try again later"
+        });
+      }
+      fetchTodos()
+
+      function toggleStatus(_id){
+        axios.put("https://todo-api-dom.vercel.app/api/todos/"+_id,{
+          status: !todos.find(el=> el._id == _id).status
+        }).then(res=>{
+          fetchTodos()
+        })
+      }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .black{
+            background-color: black;
+            color: white;
+
+        }
+        .dark{
+            background-color: black;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body id="body" class="dark">
+    <button class="black" onclick="toDarkMOde()" id="darkbtn">Dark</button>
+    <button onclick="toWhiteColor()" id="whitebtn">white</button>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam unde perferendis pariatur praesentium odio odit
+        repudiandae assumenda libero ea! Vel quos amet maxime eius dolor alias voluptatem totam possimus! Quaerat?
+    </p>
+
+    <script>
+       function toDarkMOde(){
+           document.getElementById("body").classList.add("dark")
+       }
+       function toWhiteColor(){
+        document.getElementById("body").classList.remove("dark")
+       }
+    </script>
+</body>
+
+</html>
