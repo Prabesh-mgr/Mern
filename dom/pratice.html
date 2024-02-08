@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dark{
+            background-color: black;
+            color: white;
+        }
+        .light{
+            background-color: white;
+            color: black;
+        }
+        button{
+            /* background-color: tomato; */
+            padding: 5px 10px;
+            /* color: white; */
+            font-weight: 900;
+            border: none;
+            border-radius: 10px;
+        }
+        
+    </style>
+</head>
+
+<body class="dark">
+    <button onclick="changingColor()">Go to Dark Mode</button>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis repellendus 
+        debitis tenetur quos vel quam sequi
+        velit fugit nostrum magnam maiores iure eaque, accusantium
+         cum aperiam natus veniam dolorem nobis?
+        </p>
+        <script>
+            function changingColor(){
+                let body = document.body;
+                let button = document.querySelector("button")
+        
+                if(body.classList.contains("dark")){
+                    body.classList.remove("dark")
+                    body.classList.add("light")
+                    button.textContent = "Go To Dark Mode"
+                }else{
+                    body.classList.remove("light")
+                    body.classList.add("dark")
+                    button.textContent = "Go To Light Mode"
+                }
+            }
+        </script>
+</body>
+
+
+</html>

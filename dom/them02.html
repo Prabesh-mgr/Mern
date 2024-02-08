@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Background Color</title>
+  <style>
+    body {
+      transition: background-color 0.5s ease;
+    }
+
+    .black-bg {
+      background-color: black;
+      color: white;
+    }
+
+    .white-bg {
+      background-color: white;
+      color: black;
+    }
+  </style>
+</head>
+
+<body class="black-bg">
+  <button onclick="changeBackground()">Black</button>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus in, exercitationem necessitatibus quos debitis
+    illum voluptatibus tempore a itaque deleniti distinctio vel expedita reiciendis voluptatum ratione quis, eum qui.
+    Corrupti.</p>
+
+  <script>
+    function changeBackground() {
+      let body = document.body;
+      let button = document.querySelector('button');
+
+      if (body.classList.contains('black-bg')) {
+        body.classList.remove('black-bg');
+        body.classList.add('white-bg');
+        button.textContent = "Black";
+      } else {
+        body.classList.remove('white-bg');
+        body.classList.add('black-bg');
+        button.textContent = "White";
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        img{
+            width: 20px;
+        }
+        .product-items{
+             display: flex;
+             flex-wrap: wrap;
+             gap: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul id="productList" class="product-items">
+        <li></li>
+    </ul>
+
+    <script>
+        let todos = []
+        function productListItems() {
+            axios.get("https://dummyjson.com/products")
+                .then((res) => {
+                    console.log(res.data.products)
+                    todos = res.data.products
+
+                    let output = ""
+                    res.data.products.forEach(element => {
+                        output += `<li>${element.title}</li>
+                        <img src=${element.thumbnail}>`
+                    })
+                    document.getElementById("productList").innerHTML = output
+                })
+            }
+        productListItems()
+
+    </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+    <ul id="list">
+
+    </ul>
+    <script>
+        let todos = []
+        function fetchList() {
+            axios.get("https://dummyjson.com/products")
+                .then((res) => {
+                    console.log(res.data.products)
+                    todos = res.data.products
+
+                    let output = ""
+                    todos.forEach((element,index) => {
+                        output += `<li>${element.title}<button onclick="deleteData(${index})">Delete</button></li>
+                    `
+                    })
+                    document.getElementById("list").innerHTML = output
+                })
+        }
+        fetchList()
+
+        function deleteData(editableidx) {
+            todos = todos.filter((el, index) => index != editableidx)
+            let output = ""
+            todos.forEach((element) => {
+                output += `<li>${element.title}<button onclick="deleteData()">Delete</button></li>
+                   `
+
+            })
+        }
+    </script>
+
+</body>
+
+</html>
